@@ -4,27 +4,195 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:paddingHorizontal="25dp"
+    android:paddingVertical="30dp"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <TextView
-        android:id="@+id/main_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_title"
-        app:layout_constraintBottom_toTopOf="@+id/instructions"
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/loterissima_logo"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:contentDescription="@string/logo_description"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/loterissima" />
 
+    <!-- Instruction -->
     <TextView
         android:id="@+id/instructions"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/instructions"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@+id/loterissima_logo"
+        tools:layout_editor_absoluteX="-25dp" />
+
+    <!-- User input balls-->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        app:layout_constraintTop_toBottomOf="@+id/instructions"
+        tools:layout_editor_absoluteX="25dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/ball_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/balls_description"
+                android:src="@drawable/ball"/>
+
+            <EditText
+                android:id="@+id/ball_1_edit"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:textSize="14sp"
+                android:ems="10"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textAlignment="center"
+                android:autofillHints="@string/autofill_hint"
+                android:hint="@string/edit_hint"
+                android:inputType="number" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/ball_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/balls_description"
+                android:src="@drawable/ball"/>
+
+            <EditText
+                android:id="@+id/ball_2_edit"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:textSize="14sp"
+                android:ems="10"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textAlignment="center"
+                android:autofillHints="@string/autofill_hint"
+                android:hint="@string/edit_hint"
+                android:inputType="number" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/ball_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/balls_description"
+                android:src="@drawable/ball"/>
+
+            <EditText
+                android:id="@+id/ball_3_edit"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:textSize="14sp"
+                android:ems="10"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textAlignment="center"
+                android:autofillHints="@string/autofill_hint"
+                android:hint="@string/edit_hint"
+                android:inputType="number" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/ball_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/balls_description"
+                android:src="@drawable/ball"/>
+
+            <EditText
+                android:id="@+id/ball_4_edit"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:textSize="14sp"
+                android:ems="10"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textAlignment="center"
+                android:autofillHints="@string/autofill_hint"
+                android:hint="@string/edit_hint"
+                android:inputType="number" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/ball_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/balls_description"
+                android:src="@drawable/ball"/>
+
+            <EditText
+                android:id="@+id/ball_5_edit"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:textSize="14sp"
+                android:ems="10"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textAlignment="center"
+                android:autofillHints="@string/autofill_hint"
+                android:hint="@string/edit_hint"
+                android:inputType="number" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- Draw game button-->
+    <Button
+        android:id="@+id/play_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_orange"
+        android:gravity="center"
+        android:text="@string/play_button"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="25dp" />
+
+    <!-- To-enable views -->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

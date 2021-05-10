@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void findViewsById() {
-        appTitle = findViewById(R.id.main_title);
-        instructions = findViewById(R.id.instructions);
+
     }
 }

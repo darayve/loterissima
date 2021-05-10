@@ -1,6 +1,16 @@
 <resources>
-    <string name="app_name">LottoApp</string>
-    <string name="app_title">LottoApp</string>
-    <string name="instructions">Faça seu jogo</string>
+    <string name="app_name">Loteríssima</string>
+    <string name="app_title">Loteríssima</string>
+    <string name="instructions">Faça seu jogo:</string>
     <string name="play_button">Sortear</string>
+    <string name="logo_description">Logo do Loterissima</string>
+    <string name="balls_description">Bola 8 billiard</string>
+    <string name="autofill_hint"></string>
+    <string name="edit_hint"></string>
+
+    <!-- Fonts -->
+    <string name="Poppins_Regular">poppins_regular</string>
+    <string name="Poppins_Medium">poppins_medium</string>
+    <string name="Poppins_SemiBold">poppins_semibold</string>
+    <string name="Poppins_Bold">poppins_bold</string>
 </resources>
