@@ -7,12 +7,12 @@
     <string name="balls_description">Bola 8 billiard</string>
     <string name="autofill_hint"></string>
     <string name="edit_hint"></string>
-
-    <!-- Fonts -->
-    <string name="Poppins_Regular">poppins_regular</string>
-    <string name="Poppins_Medium">poppins_medium</string>
-    <string name="Poppins_SemiBold">poppins_semibold</string>
-    <string name="Poppins_Bold">poppins_bold</string>
     <string name="extraction">Extração:</string>
     <string name="points">Resultado:</string>
+
+    <!-- Alerts -->
+    <string name="duplicate_numbers_alert">Há números duplicados</string>
+    <string name="fill_empty_field_alert">Preencha o campo vazio</string>
+    <string name="numbers_out_of_range_alert">Digite valores entre 1 e 50</string>
+    <string name="ask_to_fill_correctly_alert">Preencha corretamente</string>
 </resources>
