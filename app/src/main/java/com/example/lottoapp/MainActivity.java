@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
             playButton.setText(R.string.reset_button);
             toggleResultsVisibility();
         } else {
-            fillCorrectlyToast = Toast.makeText(context, "Preencha corretamente", duration);
+            fillCorrectlyToast = Toast.makeText(context, R.string.ask_to_fill_correctly_alert, duration);
             fillCorrectlyToast.show();
         }
     }
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < allBallValues.length; i++) {
             for (int j = i + 1 ; j < allBallValues.length; j++) {
                 if (allBallValues[i].equals(allBallValues[j])) {
-                    wrongNumberToast = Toast.makeText(context, "Números duplicados", duration);
+                    wrongNumberToast = Toast.makeText(context, R.string.duplicate_numbers_alert, duration);
                     wrongNumberToast.show();
 
                     return false;
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean validateInput(EditText v, String s) {
         if (TextUtils.isEmpty(v.getText())) {
-            fillEmptyFieldToast = Toast.makeText(context, "Preencha o campo vazio", duration);
+            fillEmptyFieldToast = Toast.makeText(context, R.string.fill_empty_field_alert, duration);
             fillEmptyFieldToast.show();
             v.requestFocus();
 
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (Integer.parseInt(s) < 1 || Integer.parseInt(s) > 50) {
-            wrongNumberToast = Toast.makeText(context, "Digite valores entre 1 e 50", duration);
+            wrongNumberToast = Toast.makeText(context, R.string.numbers_out_of_range_alert, duration);
             wrongNumberToast.show();
             v.requestFocus();
 
