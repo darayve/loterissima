@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     // Views
-    private TextView resultBall1, resultBall2, resultBall3, resultBall4, resultBall5, resultPoints, extractionLabel, pointsLabel;
+    private TextView resultBall1, resultBall2, resultBall3, resultBall4, resultBall5, resultPoints;
     private EditText editBall_1, editBall_2, editBall_3, editBall_4, editBall_5;
     private Button playButton;
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Context context;
 
     // Others
-    LinearLayout resultBallsView;
+    LinearLayout resultContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,26 +54,11 @@ public class MainActivity extends AppCompatActivity {
         getTextFromUserBalls();
         getTextFromGeneratedBalls();
         resultPoints.setText(String.valueOf(getResultPoints()));
-        toggleResultsVisibility();
     }
 
     private void toggleResultsVisibility() {
-        if (extractionLabel.isShown()) setLowerSectionInvisible();
-        else setLowerSectionVisible();
-    }
-
-    private void setLowerSectionVisible() {
-        extractionLabel.setVisibility(View.VISIBLE);
-        resultBallsView.setVisibility(View.VISIBLE);
-        pointsLabel.setVisibility(View.VISIBLE);
-        resultPoints.setVisibility(View.VISIBLE);
-    }
-
-    private void setLowerSectionInvisible() {
-        extractionLabel.setVisibility(View.INVISIBLE);
-        resultBallsView.setVisibility(View.INVISIBLE);
-        pointsLabel.setVisibility(View.INVISIBLE);
-        resultPoints.setVisibility(View.INVISIBLE);
+        if (resultContainer.isShown()) resultContainer.setVisibility(View.INVISIBLE);
+        else resultContainer.setVisibility(View.VISIBLE);
     }
 
     private void reset() {
@@ -142,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         if (isNumbersOk) {
             generateNumbers();
             playButton.setText(R.string.reset_button);
+            toggleResultsVisibility();
         } else {
             fillCorrectlyToast = Toast.makeText(context, "Preencha corretamente", duration);
             fillCorrectlyToast.show();
@@ -240,10 +226,7 @@ public class MainActivity extends AppCompatActivity {
         resultBall4 = findViewById(R.id.result4);
         resultBall5 = findViewById(R.id.result5);
 
-        extractionLabel = findViewById(R.id.extraction);
-        resultBallsView = findViewById(R.id.result_balls);
-        pointsLabel = findViewById(R.id.points_label);
-
+        resultContainer = findViewById(R.id.resultContainer);
         resultPoints = findViewById(R.id.points);
     }
 }
