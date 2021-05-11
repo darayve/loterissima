@@ -1,6 +1,7 @@
 package com.example.lottoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +17,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     // Views
-    private TextView resultBall1, resultBall2, resultBall3, resultBall4, resultBall5, resultPoints;
+    private TextView resultBall1, resultBall2, resultBall3, resultBall4, resultBall5, resultPoints, extractionLabel, pointsLabel;
     private EditText editBall_1, editBall_2, editBall_3, editBall_4, editBall_5;
     private Button playButton;
 
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Context context;
 
     // Others
+    LinearLayout resultBallsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,24 +43,97 @@ public class MainActivity extends AppCompatActivity {
         context = getApplicationContext();
 
         playButton.setOnClickListener(v -> {
-            getTextFromUserBalls();
-            checkAll();
-            getTextFromUserBalls();
-            getTextFromGeneratedBalls();
-            resultPoints.setText(String.valueOf(getResultPoints()));
+            if (playButton.getText().toString().contentEquals("Sortear")) playTheGame();
+            else reset();
         });
+    }
+
+    private void playTheGame() {
+        getTextFromUserBalls();
+        checkAll();
+        getTextFromUserBalls();
+        getTextFromGeneratedBalls();
+        resultPoints.setText(String.valueOf(getResultPoints()));
+        toggleResultsVisibility();
+    }
+
+    private void toggleResultsVisibility() {
+        if (extractionLabel.isShown()) setLowerSectionInvisible();
+        else setLowerSectionVisible();
+    }
+
+    private void setLowerSectionVisible() {
+        extractionLabel.setVisibility(View.VISIBLE);
+        resultBallsView.setVisibility(View.VISIBLE);
+        pointsLabel.setVisibility(View.VISIBLE);
+        resultPoints.setVisibility(View.VISIBLE);
+    }
+
+    private void setLowerSectionInvisible() {
+        extractionLabel.setVisibility(View.INVISIBLE);
+        resultBallsView.setVisibility(View.INVISIBLE);
+        pointsLabel.setVisibility(View.INVISIBLE);
+        resultPoints.setVisibility(View.INVISIBLE);
+    }
+
+    private void reset() {
+        setTextColorToBlack();
+        resetUserInputs();
+        resetGeneratedNumbers();
+        toggleResultsVisibility();
+        playButton.setText(R.string.play_button);
+    }
+
+    private void resetUserInputs() {
+        resultBall1.setText("");
+        resultBall2.setText("");
+        resultBall3.setText("");
+        resultBall4.setText("");
+        resultBall5.setText("");
+        resultPoints.setText("0");
+    }
+
+    private void resetGeneratedNumbers() {
+        editBall_1.setText(null);
+        editBall_2.setText(null);
+        editBall_3.setText(null);
+        editBall_4.setText(null);
+        editBall_5.setText(null);
+    }
+
+    private void setTextColorToBlack() {
+        resultBall1.setTextColor(ContextCompat.getColor(context, R.color.black));
+        resultBall2.setTextColor(ContextCompat.getColor(context, R.color.black));
+        resultBall3.setTextColor(ContextCompat.getColor(context, R.color.black));
+        resultBall4.setTextColor(ContextCompat.getColor(context, R.color.black));
+        resultBall5.setTextColor(ContextCompat.getColor(context, R.color.black));
     }
 
     private int getResultPoints() {
         int points = 0;
 
         for (String allBallValue : allBallValues) {
-            for (String randomNumber : randomNumbers) {
-                if (allBallValue.equals(randomNumber)) points++;
+            for (int j = 0; j < randomNumbers.length; j++) {
+                if (allBallValue.equals(randomNumbers[j])) {
+                    points++;
+                    changeNumbersColor(j + 1);
+                }
             }
         }
 
         return points;
+    }
+
+    private void changeNumbersColor(int arrayPosition) {
+        if (arrayPosition == 1) setTextColorToOrange(resultBall1);
+        if (arrayPosition == 2) setTextColorToOrange(resultBall2);
+        if (arrayPosition == 3) setTextColorToOrange(resultBall3);
+        if (arrayPosition == 4) setTextColorToOrange(resultBall4);
+        if (arrayPosition == 5) setTextColorToOrange(resultBall5);
+    }
+
+    private void setTextColorToOrange(TextView txt) {
+        txt.setTextColor(ContextCompat.getColor(context, R.color.dark_orange));
     }
 
     private void checkAll() {
@@ -65,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (isNumbersOk) {
             generateNumbers();
+            playButton.setText(R.string.reset_button);
         } else {
             fillCorrectlyToast = Toast.makeText(context, "Preencha corretamente", duration);
             fillCorrectlyToast.show();
@@ -162,6 +239,10 @@ public class MainActivity extends AppCompatActivity {
         resultBall3 = findViewById(R.id.result3);
         resultBall4 = findViewById(R.id.result4);
         resultBall5 = findViewById(R.id.result5);
+
+        extractionLabel = findViewById(R.id.extraction);
+        resultBallsView = findViewById(R.id.result_balls);
+        pointsLabel = findViewById(R.id.points_label);
 
         resultPoints = findViewById(R.id.points);
     }

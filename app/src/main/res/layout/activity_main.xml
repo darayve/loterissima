@@ -197,13 +197,15 @@
         android:id="@+id/extraction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
         android:text="@string/extraction"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="22sp"
-        android:layout_marginVertical="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/play_button"
-        tools:layout_editor_absoluteX="-25dp" />
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/play_button" />
 
     <!-- Result balls -->
     <LinearLayout
@@ -212,7 +214,9 @@
         android:layout_height="120dp"
         android:baselineAligned="false"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="25dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/extraction">
 
         <RelativeLayout
@@ -236,8 +240,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:text=""
-                android:textColor="@color/black"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </RelativeLayout>
 
@@ -262,8 +266,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:text=""
-                android:textColor="@color/black"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </RelativeLayout>
 
@@ -288,8 +292,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:text=""
-                android:textColor="@color/black"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </RelativeLayout>
 
@@ -314,8 +318,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:text=""
-                android:textColor="@color/black"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </RelativeLayout>
 
@@ -340,8 +344,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:text=""
-                android:textColor="@color/black"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </RelativeLayout>
     </LinearLayout>
@@ -355,8 +359,10 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="22sp"
-        app:layout_constraintTop_toBottomOf="@+id/result_balls"
-        tools:layout_editor_absoluteX="-25dp" />
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result_balls" />
 
     <TextView
         android:id="@+id/points"
@@ -367,7 +373,10 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="40sp"
-        app:layout_constraintTop_toBottomOf="@+id/points_label"
-        tools:layout_editor_absoluteX="-25dp" />
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/points_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

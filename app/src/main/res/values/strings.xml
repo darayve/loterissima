@@ -2,6 +2,7 @@
     <string name="app_name">Loteríssima</string>
     <string name="instructions">Faça seu jogo:</string>
     <string name="play_button">Sortear</string>
+    <string name="reset_button">Reset</string>
     <string name="logo_description">Logo do Loterissima</string>
     <string name="balls_description">Bola 8 billiard</string>
     <string name="autofill_hint"></string>
