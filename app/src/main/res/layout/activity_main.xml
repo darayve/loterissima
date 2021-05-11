@@ -34,9 +34,9 @@
         app:layout_constraintTop_toBottomOf="@+id/loterissima_logo"
         tools:layout_editor_absoluteX="-25dp" />
 
-    <!-- User input balls-->
+    <!-- User input balls -->
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/input_balls"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:orientation="horizontal"
@@ -180,7 +180,7 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <!-- Draw game button-->
+    <!-- Draw game button -->
     <Button
         android:id="@+id/play_button"
         android:layout_width="match_parent"
@@ -189,10 +189,185 @@
         android:gravity="center"
         android:text="@string/play_button"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/input_balls"
         tools:layout_editor_absoluteX="25dp" />
 
-    <!-- To-enable views -->
+    <!-- Extraction text -->
+    <TextView
+        android:id="@+id/extraction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/extraction"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:layout_marginVertical="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/play_button"
+        tools:layout_editor_absoluteX="-25dp" />
 
+    <!-- Result balls -->
+    <LinearLayout
+        android:id="@+id/result_balls"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/extraction">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/result_ball1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/balls_description"
+                android:src="@drawable/ball" />
+
+            <TextView
+                android:id="@+id/result1"
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text=""
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/result_ball2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/balls_description"
+                android:src="@drawable/ball" />
+
+            <TextView
+                android:id="@+id/result2"
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text=""
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/result_ball3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/balls_description"
+                android:src="@drawable/ball" />
+
+            <TextView
+                android:id="@+id/result3"
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text=""
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/result_ball4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/balls_description"
+                android:src="@drawable/ball" />
+
+            <TextView
+                android:id="@+id/result4"
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text=""
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/result_ball5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/balls_description"
+                android:src="@drawable/ball" />
+
+            <TextView
+                android:id="@+id/result5"
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text=""
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- Points -->
+    <TextView
+        android:id="@+id/points_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/points"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@+id/result_balls"
+        tools:layout_editor_absoluteX="-25dp" />
+
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        app:layout_constraintTop_toBottomOf="@+id/points_label"
+        tools:layout_editor_absoluteX="-25dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
