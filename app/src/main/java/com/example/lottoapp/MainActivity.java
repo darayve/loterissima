@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         resultBall3.setText("");
         resultBall4.setText("");
         resultBall5.setText("");
-        resultPoints.setText("0");
+        resultPoints.setText("");
     }
 
     private void resetGeneratedNumbers() {
