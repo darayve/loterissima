@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout resultContainer;
 
     // Media player
-    MediaPlayer winSound;
+    MediaPlayer winSound, resultSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         stopWinSound();
+        stopResultSound();
     }
 
     private void showJackpot() {
@@ -87,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
     private void stopWinSound() {
         winSound.release();
         winSound = null;
+    }
+
+    private void stopResultSound() {
+        resultSound.release();
+        resultSound = null;
     }
 
     private void toggleWinImgVisibilityAndSound() {
@@ -107,7 +113,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void toggleResultsVisibility() {
         if (resultContainer.isShown()) resultContainer.setVisibility(View.INVISIBLE);
-        else resultContainer.setVisibility(View.VISIBLE);
+        else {
+            resultContainer.setVisibility(View.VISIBLE);
+            playResultBallsSound();
+        }
+    }
+
+    private void playResultBallsSound() {
+        if (resultSound == null) {
+            resultSound = MediaPlayer.create(context, R.raw.bling);
+            resultSound.setOnCompletionListener(mp -> stopResultSound());
+        }
+        resultSound.start();
     }
 
     private void reset() {
