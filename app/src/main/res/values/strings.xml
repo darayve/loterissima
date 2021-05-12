@@ -5,14 +5,17 @@
     <string name="reset_button">Reset</string>
     <string name="logo_description">Logo do Loterissima</string>
     <string name="balls_description">Bola 8 billiard</string>
-    <string name="autofill_hint"></string>
-    <string name="edit_hint"></string>
     <string name="extraction">Extração:</string>
     <string name="points">Resultado:</string>
+
+    <!-- Text Hints -->
+    <string name="autofill_hint"></string>
+    <string name="edit_hint"></string>
 
     <!-- Alerts -->
     <string name="duplicate_numbers_alert">Há números duplicados</string>
     <string name="fill_empty_field_alert">Preencha o campo vazio</string>
     <string name="numbers_out_of_range_alert">Digite valores entre 1 e 50</string>
     <string name="ask_to_fill_correctly_alert">Preencha corretamente</string>
+    <string name="win_image_description">Imagem de vitória</string>
 </resources>

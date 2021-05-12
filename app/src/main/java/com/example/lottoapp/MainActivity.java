@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView resultBall1, resultBall2, resultBall3, resultBall4, resultBall5, resultPoints;
     private EditText editBall_1, editBall_2, editBall_3, editBall_4, editBall_5;
     private Button playButton;
+    private ImageView victoryImage;
 
     // Text values
     private String textBall_1, textBall_2, textBall_3, textBall_4, textBall_5, randomNumber1, randomNumber2, randomNumber3, randomNumber4, randomNumber5;
@@ -35,17 +38,56 @@ public class MainActivity extends AppCompatActivity {
     // Others
     LinearLayout resultContainer;
 
+    // Media player
+    MediaPlayer winSound;
+    private boolean wasWinSoundPlayed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewsById();
         context = getApplicationContext();
+        winSound = null;
 
         playButton.setOnClickListener(v -> {
             if (playButton.getText().toString().contentEquals("Sortear")) playTheGame();
             else reset();
         });
+
+        victoryImage.setOnClickListener(v -> toggleWinImgVisibilityAndSound());
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stopWinSound();
+    }
+
+    private void showJackpot() {
+        toggleWinImgVisibilityAndSound();
+    }
+
+    private void playWinSound() {
+        if (winSound == null) {
+            winSound = MediaPlayer.create(context, R.raw.bingo);
+            wasWinSoundPlayed = true;
+            winSound.setOnCompletionListener(mp -> stopWinSound());
+        }
+        winSound.start();
+    }
+
+    private void stopWinSound() {
+        winSound.release();
+        winSound = null;
+    }
+
+    private void toggleWinImgVisibilityAndSound() {
+        if (victoryImage.isShown()) victoryImage.setVisibility(View.GONE);
+        else {
+            victoryImage.setVisibility(View.VISIBLE);
+            playWinSound();
+        }
     }
 
     private void playTheGame() {
@@ -105,6 +147,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
+        if (points == 5) showJackpot();
 
         return points;
     }
@@ -228,5 +272,7 @@ public class MainActivity extends AppCompatActivity {
 
         resultContainer = findViewById(R.id.resultContainer);
         resultPoints = findViewById(R.id.points);
+
+        victoryImage = findViewById(R.id.imageView);
     }
 }
