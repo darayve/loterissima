@@ -1,3 +1,10 @@
+/*
+    Alunos:
+        Dara Yve Lopes da Silva RA: 2760481821016
+        Henrique Servidoni de Oliveira RA: 2760481821017
+        Thalita Rosa de Jesus RA: 2760481811030
+ */
+
 package com.example.lottoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -148,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if (points == 1) showJackpot();
+        if (points == 5) showJackpot();
 
         return points;
     }
