@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,9 +28,10 @@ public class MainActivity extends AppCompatActivity {
     // Text values
     private String textBall_1, textBall_2, textBall_3, textBall_4, textBall_5, randomNumber1, randomNumber2, randomNumber3, randomNumber4, randomNumber5;
     private String[] allBallValues, randomNumbers;
+    private int[] randomNumbersInt;
 
     // Toast messages props
-    Toast fillCorrectlyToast, fillEmptyFieldToast, wrongNumberToast;
+    Toast fillEmptyFieldToast, wrongNumberToast;
     int duration = Toast.LENGTH_SHORT;
 
     // Context
@@ -40,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
     // Media player
     MediaPlayer winSound;
-    private boolean wasWinSoundPlayed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
     private void playWinSound() {
         if (winSound == null) {
             winSound = MediaPlayer.create(context, R.raw.bingo);
-            wasWinSoundPlayed = true;
             winSound.setOnCompletionListener(mp -> stopWinSound());
         }
         winSound.start();
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if (points == 5) showJackpot();
+        if (points == 1) showJackpot();
 
         return points;
     }
@@ -166,16 +166,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkAll() {
-        boolean isNumbersOk = checkValidations();
-
-        if (isNumbersOk) {
+        if (checkValidations()) {
             generateNumbers();
-            playButton.setText(R.string.reset_button);
-            toggleResultsVisibility();
-        } else {
-            fillCorrectlyToast = Toast.makeText(context, R.string.ask_to_fill_correctly_alert, duration);
-            fillCorrectlyToast.show();
-        }
+            if (checkGeneratedNumbersDuplicates()) {
+                orderAndSetGeneratedNumbers();
+                playButton.setText(R.string.reset_button);
+                toggleResultsVisibility();
+            } else checkAll();
+        } else Toast.makeText(context, R.string.ask_to_fill_correctly_alert, duration).show();
     }
 
     private boolean checkValidations() {
@@ -242,17 +240,52 @@ public class MainActivity extends AppCompatActivity {
         allBallValues = new String[] {textBall_1, textBall_2, textBall_3, textBall_4, textBall_5};
     }
 
-    private void generateRandomNumber(TextView v) {
-        int x = (new Random().nextInt(50) + 1);
-        v.setText(String.valueOf(x));
+    private int generateRandomNumber() {
+        return (new Random().nextInt(50) + 1);
     }
 
-    private void generateNumbers() {
-        generateRandomNumber(resultBall1);
-        generateRandomNumber(resultBall2);
-        generateRandomNumber(resultBall3);
-        generateRandomNumber(resultBall4);
-        generateRandomNumber(resultBall5);
+    private int[] generateNumbers() {
+        int rnd1, rnd2, rnd3, rnd4, rnd5;
+
+        rnd1 = generateRandomNumber();
+        rnd2 = generateRandomNumber();
+        rnd3 = generateRandomNumber();
+        rnd4 = generateRandomNumber();
+        rnd5 = generateRandomNumber();
+
+        randomNumbersInt = new int[] {rnd1, rnd2, rnd3, rnd4, rnd5};
+
+        Arrays.sort(randomNumbersInt);
+
+        return randomNumbersInt;
+    }
+
+    private void orderAndSetGeneratedNumbers() {
+        int aux1, aux2, aux3, aux4, aux5;
+
+        aux1 = randomNumbersInt[0];
+        aux2 = randomNumbersInt[1];
+        aux3 = randomNumbersInt[2];
+        aux4 = randomNumbersInt[3];
+        aux5 = randomNumbersInt[4];
+
+        resultBall1.setText(String.valueOf(aux1));
+        resultBall2.setText(String.valueOf(aux2));
+        resultBall3.setText(String.valueOf(aux3));
+        resultBall4.setText(String.valueOf(aux4));
+        resultBall5.setText(String.valueOf(aux5));
+    }
+
+    private boolean checkGeneratedNumbersDuplicates() {
+        for (int i = 0; i < randomNumbersInt.length; i++) {
+            for (int j = i + 1 ; j < randomNumbersInt.length; j++) {
+                if (randomNumbersInt[i] == randomNumbersInt[j]) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     private void findViewsById() {
