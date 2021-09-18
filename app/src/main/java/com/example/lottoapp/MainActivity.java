@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         winSound = null;
 
         playButton.setOnClickListener(v -> {
-            if (playButton.getText().toString().contentEquals("Sortear")) playTheGame();
+            if (playButton.getText().toString() == getString(R.string.play_button)) playTheGame();
             else reset();
         });
 
